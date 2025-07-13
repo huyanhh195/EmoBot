@@ -1,6 +1,41 @@
 #include "utils.h"
 
 void blink_led(int time);
+void playGIF(const AnimatedGIF* gif); 
+
+
+void setup() {
+  Serial.begin(115200);
+  
+  pinMode(LED_PIN, OUTPUT);
+  
+  delay(1000);
+
+  Wire.begin(SSD1306_SDA, SSD1306_SCL);
+  while(!display.begin(SSD1306_SWITCHCAPVCC, SSD1306_ADDR)){
+    Serial.println("Waiting Monitor");
+    blink_led(100);
+  }
+
+  display.clearDisplay();
+  display.display();
+  playGIF(&EmoBot_Intro_gif);
+  delay(200);
+}
+
+void loop() {
+  playGIF(&EmoBot_Sleepy_gif);
+  delay(500);
+  playGIF(&EmoBot_Frustrated_gif);
+  delay(500);
+}
+
+void blink_led(int time){
+  digitalWrite(LED_PIN, HIGH);
+  delay(time);
+  digitalWrite(LED_PIN, LOW);
+  delay(time);
+}
 
 void playGIF(const AnimatedGIF* gif) {
   for (uint8_t frame = 0; frame < gif->frame_count; frame++) {
@@ -19,36 +54,4 @@ void playGIF(const AnimatedGIF* gif) {
     display.display();
     delay(gif->delays[frame]);
   }
-}
-
-void setup() {
-  Serial.begin(115200);
-  
-  pinMode(LED_PIN, OUTPUT);
-  
-  delay(1000);
-
-
-  Wire.begin(SSD1306_SDA, SSD1306_SCL);
-  while(!display.begin(SSD1306_SWITCHCAPVCC, SSD1306_ADDR)){
-    Serial.println("Waiting Monitor");
-    blink_led(100);
-  }
-
-  display.clearDisplay();
-  display.display();
-}
-
-void loop() {
-  playGIF(&EmoBot_Sleepy_gif);
-  delay(500);
-  playGIF(&EmoBot_Frustrated_gif);
-  delay(500);
-}
-
-void blink_led(int time){
-  digitalWrite(LED_PIN, HIGH);
-  delay(time);
-  digitalWrite(LED_PIN, LOW);
-  delay(time);
 }

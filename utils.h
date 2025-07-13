@@ -4,6 +4,7 @@
 
 #include "frames/EmoBot_Sleepy.h"
 #include "frames/EmoBot_Frustrated.h"
+#include "frames/EmoBot_Intro.h"
 
 #define LED_PIN 8
 
@@ -15,18 +16,3 @@
 
 Adafruit_SSD1306 display(SSD1306_WIDTH, SSD1306_HEIGHT, &Wire);
 
-// AnimatedGIF sleepyGIF = {
-//   EMOBOT_SLEEPY_FRAME_COUNT,
-//   EMOBOT_SLEEPY_WIDTH,
-//   EMOBOT_SLEEPY_HEIGHT,
-//   EmoBot_Sleepy_delays,
-//   EmoBot_Sleepy_frames
-// };
-  
-// AnimatedGIF frusGIF = {
-//   EMOBOT_FRUSTRATED_FRAME_COUNT,
-//   EMOBOT_FRUSTRATED_WIDTH,
-//   EMOBOT_FRUSTRATED_HEIGHT,
-//   EmoBot_Frustrated_delays,
-//   EmoBot_Frustrated_frames
-// };
