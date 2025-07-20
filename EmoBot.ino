@@ -9,8 +9,6 @@ void setup() {
   
   pinMode(LED_PIN, OUTPUT);
   
-  delay(1000);
-
   Wire.begin(SSD1306_SDA, SSD1306_SCL);
   while(!display.begin(SSD1306_SWITCHCAPVCC, SSD1306_ADDR)){
     Serial.println("Waiting Monitor");
@@ -19,14 +17,16 @@ void setup() {
 
   display.clearDisplay();
   display.display();
-  playGIF(&EmoBot_Intro_gif);
-  delay(200);
+  playGIF(&EmoBot_Intro_gif, 50);
+  delay(500);
 }
 
 void loop() {
-  playGIF(&EmoBot_Sleepy_gif);
+  playGIF(&Emobot_Default_gif, DELAY_FRAME);
   delay(500);
-  playGIF(&EmoBot_Frustrated_gif);
+  playGIF(&EmoBot_Frustrated_gif, DELAY_FRAME);
+  delay(500);
+  playGIF(&EmoBot_Sleepy_gif, DELAY_FRAME);
   delay(500);
 }
 
@@ -37,7 +37,7 @@ void blink_led(int time){
   delay(time);
 }
 
-void playGIF(const AnimatedGIF* gif) {
+void playGIF(const AnimatedGIF* gif, uint16_t delays) {
   for (uint8_t frame = 0; frame < gif->frame_count; frame++) {
     display.clearDisplay();
 
@@ -52,6 +52,6 @@ void playGIF(const AnimatedGIF* gif) {
     }
 
     display.display();
-    delay(gif->delays[frame]);
+    delay(delays);
   }
 }
