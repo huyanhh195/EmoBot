@@ -3,7 +3,6 @@
 void blink_led(int time);
 void playGIF(const AnimatedGIF* gif); 
 
-
 void setup() {
   Serial.begin(115200);
   
@@ -22,14 +21,11 @@ void setup() {
 }
 
 void loop() {
-  playGIF(&Emobot_Default_gif, DELAY_FRAME);
-  delay(500);
-  playGIF(&EmoBot_Frustrated_gif, DELAY_FRAME);
-  delay(500);
-  playGIF(&EmoBot_Sleepy_gif, DELAY_FRAME);
-  delay(500);
+  for (int i = 0; i < 3; i ++){
+    playGIF(&gif[i], DELAY_FRAME);
+    delay(500);
+  }
 }
-
 void blink_led(int time){
   digitalWrite(LED_PIN, HIGH);
   delay(time);

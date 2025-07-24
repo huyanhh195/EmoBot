@@ -19,3 +19,4 @@
 
 Adafruit_SSD1306 display(SSD1306_WIDTH, SSD1306_HEIGHT, &Wire);
 
+const AnimatedGIF gif[]= {Emobot_Default_gif, EmoBot_Frustrated_gif, EmoBot_Sleepy_gif};
