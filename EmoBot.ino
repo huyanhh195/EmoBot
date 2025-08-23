@@ -40,7 +40,7 @@ void loop() {
       currentFrame = 0;
       currentGifIndex++;
 
-      if (currentGifIndex >= 4) {
+      if (currentGifIndex >= 9) {
         currentGifIndex = 1;
       }
     }
@@ -48,7 +48,7 @@ void loop() {
   if (flagBlinkLed) {
     static bool status = true;
     flagBlinkLed = false;
-    
+
     status = !status;
     digitalWrite(LED_PIN, status);
   }
