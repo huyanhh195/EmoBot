@@ -22,30 +22,33 @@ void setup() {
 void IRAM_ATTR onTimer() {
   flagFrame = true;
   cntBlinkLed++;
-  if (cntBlinkLed == 5)
+  if (cntBlinkLed == 5) {
     cntBlinkLed = 0;
     flagBlinkLed = true;
+  }
 }
 
 void loop() {
   if (flagFrame) {
     flagFrame = false;
 
-    currentFrame++;
-
     drawFrame(gifs[currentGifIndex], currentFrame);
+
+    currentFrame++;
 
     if (currentFrame >= gifs[currentGifIndex]->frame_count) {
       currentFrame = 0;
       currentGifIndex++;
+
       if (currentGifIndex >= 4) {
         currentGifIndex = 1;
       }
     }
   }
-  if(flagBlinkLed){
+  if (flagBlinkLed) {
+    static bool status = true;
     flagBlinkLed = false;
-    static bool status = true; 
+    
     status = !status;
     digitalWrite(LED_PIN, status);
   }
@@ -70,5 +73,6 @@ void drawFrame(const AnimatedGIF* gif, uint8_t frame) {
       }
     }
   }
+
   display.display();
 }

@@ -17,7 +17,7 @@
 #define SSD1306_WIDTH 128
 #define SSD1306_HEIGHT 64
 
-#define DELAY_FRAME 150
+#define DELAY_FRAME 100
 
 Adafruit_SSD1306 display(SSD1306_WIDTH, SSD1306_HEIGHT, &Wire);
 
