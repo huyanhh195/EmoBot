@@ -22,7 +22,7 @@ void setup() {
 void IRAM_ATTR onTimer() {
   flagFrame = true;
   cntBlinkLed++;
-  if (cntBlinkLed == 5) {
+  if (cntBlinkLed == 16) {
     cntBlinkLed = 0;
     flagBlinkLed = true;
   }
@@ -40,7 +40,7 @@ void loop() {
       currentFrame = 0;
       currentGifIndex++;
 
-      if (currentGifIndex >= 9) {
+      if (currentGifIndex >= GIF_COUNT) {
         currentGifIndex = 1;
       }
     }
